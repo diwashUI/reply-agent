@@ -17,12 +17,17 @@ export default function Home() {
             <Logo className="h-8 w-8" />
             <span className="text-lg font-bold tracking-tight">ReplyAgent</span>
           </span>
-          <a
-            href="#demo"
-            className="rounded-full bg-zinc-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-zinc-700"
-          >
-            Try the live demo
-          </a>
+          <div className="flex items-center gap-5">
+            <a href="#pricing" className="hidden text-sm font-medium text-zinc-600 transition hover:text-zinc-900 sm:block">
+              Pricing
+            </a>
+            <a
+              href="#demo"
+              className="rounded-full bg-zinc-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-zinc-700"
+            >
+              Try the live demo
+            </a>
+          </div>
         </div>
       </header>
 
@@ -153,6 +158,94 @@ export default function Home() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── PRICING ── */}
+      <section id="pricing" className="scroll-mt-24">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <p className="text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-teal-600">
+            Pricing
+          </p>
+          <h2 className="mt-3 text-center text-3xl font-bold tracking-tight sm:text-4xl">
+            Simple pricing, serious value
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-center text-zinc-600">
+            Start with the site. Add the brain when you're ready. All prices in NPR.
+          </p>
+          <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
+            <div className="flex flex-col rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                The Website
+              </p>
+              <p className="mt-3 text-4xl font-bold tracking-tight">
+                Rs 4,000 <span className="text-base font-medium text-zinc-500">one-time</span>
+              </p>
+              <ul className="mt-5 flex-1 space-y-2.5 text-sm leading-relaxed text-zinc-600">
+                <li>One-page site for your business</li>
+                <li>Your story, menu, photos</li>
+                <li>WhatsApp ordering built in</li>
+                <li>Delivered in 3 days</li>
+              </ul>
+              <a
+                href={`mailto:${EMAIL}?subject=${encodeURIComponent("Website for my business (Rs 4,000)")}`}
+                className="mt-7 rounded-full border border-zinc-300 px-6 py-2.5 text-center text-sm font-semibold transition hover:border-zinc-500"
+              >
+                Get the website
+              </a>
+            </div>
+
+            <div className="relative flex flex-col rounded-3xl border-2 border-teal-600 bg-teal-50/60 p-8 shadow-md">
+              <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-teal-600 px-4 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-white">
+                Most popular
+              </span>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-teal-700">
+                The Brain · premium
+              </p>
+              <p className="mt-3 text-4xl font-bold tracking-tight">
+                Rs 5,000{" "}
+                <span className="text-base font-medium text-zinc-500">setup + Rs 1,500/mo</span>
+              </p>
+              <ul className="mt-5 flex-1 space-y-2.5 text-sm leading-relaxed text-zinc-700">
+                <li>AI receptionist trained on your business</li>
+                <li>Answers customers 24/7 — site, DMs, WhatsApp</li>
+                <li>Never invents a price or hour</li>
+                <li>Tricky questions land in your inbox</li>
+                <li>Monthly keeps its knowledge fresh</li>
+              </ul>
+              <a
+                href={`mailto:${EMAIL}?subject=${encodeURIComponent("AI receptionist for my business")}`}
+                className="mt-7 rounded-full bg-teal-600 px-6 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-teal-700"
+              >
+                Get the brain
+              </a>
+            </div>
+
+            <div className="flex flex-col rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                Full Package
+              </p>
+              <p className="mt-3 text-4xl font-bold tracking-tight">
+                Rs 8,000{" "}
+                <span className="text-base font-medium text-zinc-500">+ Rs 1,500/mo</span>
+              </p>
+              <ul className="mt-5 flex-1 space-y-2.5 text-sm leading-relaxed text-zinc-600">
+                <li>Everything in Website + Brain</li>
+                <li>One package, one person to call</li>
+                <li>Your entire online front desk, done for you</li>
+              </ul>
+              <a
+                href={`mailto:${EMAIL}?subject=${encodeURIComponent("Full package: website + AI receptionist")}`}
+                className="mt-7 rounded-full border border-zinc-300 px-6 py-2.5 text-center text-sm font-semibold transition hover:border-zinc-500"
+              >
+                Get the package
+              </a>
+            </div>
+          </div>
+          <p className="mx-auto mt-8 max-w-xl text-center text-sm text-zinc-500">
+            The monthly isn't a fee for nothing — it's us keeping your agent's
+            knowledge fresh: new menu items, new hours, same instant answers.
+          </p>
         </div>
       </section>
 
