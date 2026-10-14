@@ -1,7 +1,7 @@
 import Demo from "@/components/Demo";
 import Logo from "@/components/Logo";
 
-const BREWMANDU_URL = "https://cafe-demo-neon.vercel.app";
+const BREWMANDU_URL = "https://brewmundaktm.vercel.app";
 const INSTAGRAM_URL = "https://instagram.com/its_aurevya";
 const GITHUB_URL = "https://github.com/diwashUI";
 const EMAIL = "itsaurevya@gmail.com";
@@ -20,11 +20,14 @@ export default function Home() {
             <a href="#pricing" className="hidden text-sm font-medium text-zinc-600 transition hover:text-zinc-900 sm:block">
               Pricing
             </a>
+            <a href="#work" className="hidden text-sm font-medium text-zinc-600 transition hover:text-zinc-900 sm:block">
+              Work
+            </a>
             <a
-              href="#demo"
+              href="#live"
               className="rounded-full bg-zinc-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-zinc-700"
             >
-              Try the live demo
+              Try it live
             </a>
           </div>
         </div>
@@ -34,7 +37,7 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 pb-16 pt-16 text-center sm:pt-24">
         <p className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-600 shadow-sm">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
-          Live demo · no signup
+          Live · no signup
         </p>
         <h1 className="mx-auto mt-6 max-w-3xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
           A website for your shop, <span className="text-teal-600">with a brain</span>
@@ -46,10 +49,10 @@ export default function Home() {
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <a
-            href="#demo"
+            href="#live"
             className="rounded-full bg-teal-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-teal-700"
           >
-            See the demo
+            See it live
           </a>
           <a
             href={`mailto:${EMAIL}?subject=${encodeURIComponent("Website for my business")}`}
@@ -83,11 +86,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── DEMO ── */}
-      <section id="demo" className="scroll-mt-24 bg-zinc-50/70">
+      {/* ── LIVE ── */}
+      <section id="live" className="scroll-mt-24 bg-zinc-50/70">
         <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
           <p className="text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-teal-600">
-            Live demo
+            Live now
           </p>
           <h2 className="mt-3 text-center text-3xl font-bold tracking-tight sm:text-4xl">
             Try it yourself
@@ -103,11 +106,52 @@ export default function Home() {
               rel="noopener noreferrer"
               className="font-semibold text-teal-700 underline decoration-teal-300 underline-offset-4 transition hover:text-teal-600"
             >
-              See it on the demo café website →
+              See it on a real café website →
             </a>
           </p>
           <div className="mt-10">
             <Demo simple />
+          </div>
+        </div>
+      </section>
+
+      {/* ── WORK ── */}
+      <section id="work" className="scroll-mt-24">
+        <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+          <p className="text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-teal-600">
+            Our work
+          </p>
+          <h2 className="mt-3 text-center text-3xl font-bold tracking-tight sm:text-4xl">
+            Live on the internet right now
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-center text-zinc-600">
+            A complete website we built for a Kathmandu coffee shop — story,
+            menu, WhatsApp ordering — with the AI receptionist answering
+            customers on every page.
+          </p>
+          <div className="mx-auto mt-10 max-w-2xl rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm sm:p-10">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <p className="text-xl font-bold tracking-tight">Brewmandu Coffee Co.</p>
+                <p className="mt-1 text-sm text-zinc-500">Coffee shop · Kathmandu</p>
+              </div>
+              <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> Live
+              </span>
+            </div>
+            <p className="mt-4 text-[15px] leading-relaxed text-zinc-600">
+              Open it, click the chat bubble, and interrogate the receptionist —
+              menu, prices, hours, directions. It answers from the shop's real info,
+              and hands off to the owner when it doesn't know.
+            </p>
+            <a
+              href={BREWMANDU_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex rounded-full bg-zinc-900 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-zinc-700"
+            >
+              Visit the website →
+            </a>
           </div>
         </div>
       </section>

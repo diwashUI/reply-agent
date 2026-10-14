@@ -303,7 +303,7 @@ export default function Demo({ simple = false }: { simple?: boolean }) {
           <p className="mt-4 text-xs leading-relaxed text-zinc-400">
             A real client gets their own knowledge file — menu, hours, policies. The agent only
             answers from it, never invents. Edit <span className="font-mono text-zinc-300">lib/knowledge.ts</span> to
-            re-skin the whole demo.
+            re-skin it for any business.
           </p>
         </div>
       </div>
