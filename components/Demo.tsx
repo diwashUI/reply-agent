@@ -38,8 +38,10 @@ function timeNow() {
  * Live demo: you play the customer, the agent plays Brewmandu's receptionist.
  * The inspector panel shows exactly what the agent "thought" — intent,
  * confidence, and which knowledge answered — plus the owner handoff inbox.
+ *
+ * `simple` mode: chat only, no internals. For clients, not developers.
  */
-export default function Demo() {
+export default function Demo({ simple = false }: { simple?: boolean }) {
   const [msgs, setMsgs] = useState<Msg[]>([
     {
       id: nid(),
@@ -96,7 +98,7 @@ export default function Demo() {
     setResolved((s) => new Set(s).add(id));
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
+    <div className={simple ? "mx-auto max-w-2xl" : "grid gap-6 lg:grid-cols-[1.2fr_1fr]"}>
       {/* ── Customer chat ── */}
       <div className="flex flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm">
         <div className="flex items-center gap-3 border-b border-zinc-100 px-5 py-4">
@@ -196,6 +198,7 @@ export default function Demo() {
       </div>
 
       {/* ── Agent brain inspector ── */}
+      {!simple && (
       <div className="flex flex-col gap-6">
         <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
@@ -304,6 +307,7 @@ export default function Demo() {
           </p>
         </div>
       </div>
+      )}
     </div>
   );
 }

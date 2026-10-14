@@ -1,6 +1,5 @@
 import Demo from "@/components/Demo";
 import Logo from "@/components/Logo";
-import { business } from "@/lib/knowledge";
 
 const BREWMANDU_URL = "https://cafe-demo-neon.vercel.app";
 const INSTAGRAM_URL = "https://instagram.com/its_aurevya";
@@ -91,11 +90,11 @@ export default function Home() {
             Live demo
           </p>
           <h2 className="mt-3 text-center text-3xl font-bold tracking-tight sm:text-4xl">
-            You're the customer. It's {business.owner}'s receptionist.
+            Try it yourself
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-center text-zinc-600">
-            This demo is skinned as {business.name}, the sample café. Try to stump it —
-            watch the brain panel and the owner inbox.
+            You're the customer, it's the receptionist. Ask about the menu,
+            prices, hours — or try to stump it.
           </p>
           <p className="mt-2 text-center text-sm">
             <a
@@ -104,11 +103,11 @@ export default function Home() {
               rel="noopener noreferrer"
               className="font-semibold text-teal-700 underline decoration-teal-300 underline-offset-4 transition hover:text-teal-600"
             >
-              See it living on the demo café website →
+              See it on the demo café website →
             </a>
           </p>
           <div className="mt-10">
-            <Demo />
+            <Demo simple />
           </div>
         </div>
       </section>
@@ -258,11 +257,11 @@ export default function Home() {
       <section className="bg-zinc-900">
         <div className="mx-auto max-w-6xl px-6 py-16 text-center sm:py-20">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Like what you see? Let's build yours.
+            Let's build yours.
           </h2>
           <p className="mx-auto mt-3 max-w-md text-zinc-400">
-            Smart websites for local businesses — designed, built, and
-            shipped from Kathmandu.
+            ReplyAgent builds smart websites for local businesses —
+            designed and shipped from Kathmandu.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <a
@@ -296,7 +295,7 @@ export default function Home() {
           <span className="flex items-center gap-2.5">
             <Logo className="h-6 w-6" />
             <span className="font-semibold text-zinc-200">ReplyAgent</span>
-            <span>· built by diwash</span>
+            <span>· Kathmandu, Nepal</span>
           </span>
           <div className="flex items-center gap-5">
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="transition hover:text-zinc-200">
