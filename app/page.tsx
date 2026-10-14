@@ -5,6 +5,55 @@ const BREWMANDU_URL = "https://brewmundaktm.vercel.app";
 const INSTAGRAM_URL = "https://instagram.com/its_aurevya";
 const GITHUB_URL = "https://github.com/diwashUI";
 const EMAIL = "itsaurevya@gmail.com";
+// diwash's WhatsApp number in international format, no "+" or spaces, e.g. "977981234567".
+// The WhatsApp buttons stay hidden until this is filled in.
+const WHATSAPP_NUMBER = "";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  "Hi SahayakOS! I want a website for my business."
+)}`;
+
+/** Email + WhatsApp contact options. WhatsApp appears once WHATSAPP_NUMBER is set. */
+function ContactCtas({ variant }: { variant: "hero" | "card" }) {
+  const mailto = `mailto:${EMAIL}?subject=${encodeURIComponent("Website for my business")}`;
+  const wa = WHATSAPP_NUMBER !== "" && (
+    <a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={
+        variant === "hero"
+          ? "rounded-full border border-emerald-600/30 bg-emerald-50 px-6 py-3 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-100"
+          : "rounded-full border border-emerald-600/30 bg-emerald-50 px-6 py-3 text-center text-sm font-semibold text-emerald-700 transition hover:bg-emerald-100"
+      }
+    >
+      WhatsApp us
+    </a>
+  );
+  if (variant === "hero") {
+    return (
+      <>
+        <a
+          href={mailto}
+          className="rounded-full border border-zinc-300 bg-white px-6 py-3 text-sm font-semibold text-zinc-900 transition hover:border-zinc-400 hover:bg-zinc-50"
+        >
+          Email us
+        </a>
+        {wa}
+      </>
+    );
+  }
+  return (
+    <div className="mt-8 flex flex-col gap-3">
+      <a
+        href={mailto}
+        className="rounded-full bg-teal-600 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-teal-700"
+      >
+        Email us
+      </a>
+      {wa}
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -54,12 +103,7 @@ export default function Home() {
           >
             See it live
           </a>
-          <a
-            href={`mailto:${EMAIL}?subject=${encodeURIComponent("Website for my business")}`}
-            className="rounded-full border border-zinc-300 bg-white px-7 py-3 text-sm font-semibold text-zinc-900 transition hover:border-zinc-400 hover:bg-zinc-50"
-          >
-            Get your website
-          </a>
+          <ContactCtas variant="hero" />
         </div>
         <div className="mx-auto mt-12 max-w-3xl rounded-3xl border border-zinc-200 bg-zinc-50/70 px-8 py-6 text-left">
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
@@ -197,12 +241,7 @@ export default function Home() {
                   Owner inbox for the questions it can't answer
                 </li>
               </ul>
-              <a
-                href={`mailto:${EMAIL}?subject=${encodeURIComponent("Website for my business")}`}
-                className="mt-8 rounded-full bg-teal-600 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-teal-700"
-              >
-                Get your website
-              </a>
+              <ContactCtas variant="card" />
             </div>
           </div>
           <p className="mx-auto mt-8 max-w-xl text-center text-sm text-zinc-500">
