@@ -1,6 +1,6 @@
-# Sahayak Studio ☕
+# SahayakOS ☕
 
-*Sahayak* means "helper" — a small freelance studio from Kathmandu building
+*Sahayak* means "helper" — a small software company from Kathmandu building
 smart websites for local businesses. Every site ships with an AI receptionist:
 customers ask questions in the DMs — hours, menu, prices, directions — and the
 agent answers instantly from the business's real info. When it doesn't know

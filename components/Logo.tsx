@@ -1,4 +1,4 @@
-/** Sahayak Studio mark: a speech bubble mid-reply. No emoji, crisp at any size. */
+/** SahayakOS mark — old speech-bubble placeholder, replaced by the new brand mark. */
 export default function Logo({ className = "h-8 w-8" }: { className?: string }) {
   return (
     <svg viewBox="0 0 40 40" className={className} aria-hidden="true">

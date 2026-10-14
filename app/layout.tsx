@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sahayak Studio — smart websites for local shops, with AI receptionist",
+  title: "SahayakOS — smart websites for local shops, with AI receptionist",
   description: "We build complete websites for local businesses (Rs 4,000, 3 days) — every site comes with an AI receptionist that answers your customers 24/7.",
 };
 
