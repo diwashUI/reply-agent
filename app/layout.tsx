@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "SahayakOS — smart websites for local shops, with AI receptionist",
-  description: "We build complete websites for local businesses (Rs 4,000, 3 days) — every site comes with an AI receptionist that answers your customers 24/7.",
+  description: "We build complete websites for local businesses — delivered in 3 days for one fixed price. Every site comes with an AI receptionist that answers your customers 24/7.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

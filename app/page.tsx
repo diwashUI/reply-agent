@@ -40,9 +40,9 @@ export default function Home() {
           A website for your shop, <span className="text-teal-600">with a brain</span>
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-zinc-600">
-          We build complete websites for local businesses — Rs 4,000, delivered
-          in 3 days. And every site comes with our hero: an AI receptionist
-          that answers your customers 24/7.
+          We build complete websites for local businesses — delivered in
+          3 days, for one honest fixed price. And every site comes with
+          our hero: an AI receptionist that answers your customers 24/7.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <a
@@ -52,15 +52,15 @@ export default function Home() {
             See the demo
           </a>
           <a
-            href={`mailto:${EMAIL}?subject=${encodeURIComponent("Website for my business (Rs 4,000)")}`}
+            href={`mailto:${EMAIL}?subject=${encodeURIComponent("Website for my business")}`}
             className="rounded-full border border-zinc-300 bg-white px-7 py-3 text-sm font-semibold text-zinc-900 transition hover:border-zinc-400 hover:bg-zinc-50"
           >
-            Get your website — Rs 4,000
+            Get your website
           </a>
         </div>
         <div className="mx-auto mt-12 max-w-3xl rounded-3xl border border-zinc-200 bg-zinc-50/70 px-8 py-6 text-left">
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-            What Rs 4,000 gets you
+            What you get
           </p>
           <ul className="mt-3 space-y-2.5 text-[15px] text-zinc-700">
             <li className="flex gap-3">
@@ -130,8 +130,10 @@ export default function Home() {
                 The Website, with a brain
               </p>
               <p className="mt-3 text-center text-5xl font-bold tracking-tight">
-                Rs 4,000 <span className="text-lg font-medium text-zinc-500">one-time</span>
+                One fixed price
               </p>
+              <p className="mt-2 text-center text-sm text-zinc-500">
+                Agreed upfront, in writing — no hourly billing, no retainers, no surprises.
               <ul className="mt-7 space-y-3 text-[15px] leading-relaxed text-zinc-700">
                 <li className="flex gap-3">
                   <span className="font-bold text-teal-600">✓</span>
@@ -151,7 +153,7 @@ export default function Home() {
                 </li>
               </ul>
               <a
-                href={`mailto:${EMAIL}?subject=${encodeURIComponent("Website for my business (Rs 4,000)")}`}
+                href={`mailto:${EMAIL}?subject=${encodeURIComponent("Website for my business")}`}
                 className="mt-8 rounded-full bg-teal-600 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-teal-700"
               >
                 Get your website
