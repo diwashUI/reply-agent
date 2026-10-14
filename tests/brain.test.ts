@@ -55,6 +55,23 @@ describe("analyzeMessage", () => {
     expect(a.intent).toBe("human");
   });
 
+  it("tolerates typos in item names", () => {
+    const a = analyzeMessage("how much is expresso?");
+    expect(a.intent).toBe("price");
+    expect(a.item?.name).toBe("Espresso");
+  });
+
+  it("fuzzy-matches a bare typo'd item as a last resort", () => {
+    const a = analyzeMessage("capuchino");
+    expect(a.intent).toBe("price");
+    expect(a.item?.name).toBe("Cappuccino");
+  });
+
+  it("does not let fuzzy matching override a real intent", () => {
+    const a = analyzeMessage("thanks, see you later!");
+    expect(a.intent).toBe("thanks");
+  });
+
   it("falls back on nonsense", () => {
     const a = analyzeMessage("blorptastic zebras");
     expect(a.intent).toBe("fallback");
@@ -84,6 +101,23 @@ describe("replyTo", () => {
   it("recommends the signature", () => {
     const r = replyTo("what should i try?");
     expect(r.text).toContain("Himalayan Spiced Latte");
+  });
+
+  it("varies handoff replies but stays deterministic", () => {
+    const r1 = replyTo("do you cater weddings?");
+    const r2 = replyTo("do you cater weddings?");
+    expect(r1.handoff).toBe(true);
+    expect(r1.text).toBe(r2.text); // same question → same reply
+    const r3 = replyTo("is there parking nearby?");
+    expect(r3.handoff).toBe(true);
+    // different unknown questions get different replies, not one canned line
+    expect(new Set([r1.text, r3.text]).size).toBeGreaterThan(1);
+  });
+
+  it("echoes the unknown topic so it feels heard", () => {
+    const r = replyTo("do you offer catering?");
+    expect(r.handoff).toBe(true);
+    expect(r.text).toContain("catering");
   });
 
   it("hands off when it doesn't know", () => {

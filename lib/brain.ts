@@ -51,6 +51,77 @@ function hits(text: string, keywords: string[]): string[] {
   });
 }
 
+/** Tiny edit-distance for typo tolerance ("expresso" → "espresso"). */
+function levenshtein(a: string, b: string): number {
+  const m = a.length;
+  const n = b.length;
+  if (m === 0) return n;
+  if (n === 0) return m;
+  let prev = Array.from({ length: n + 1 }, (_, i) => i);
+  for (let i = 1; i <= m; i++) {
+    const cur = [i];
+    for (let j = 1; j <= n; j++) {
+      cur[j] = Math.min(
+        prev[j] + 1,
+        cur[j - 1] + 1,
+        prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)
+      );
+    }
+    prev = cur;
+  }
+  return prev[n];
+}
+
+/**
+ * Find a menu item even when the customer mistypes it. Only used as a
+ * fallback — exact keyword matches always win, so "see you later" never
+ * becomes a latte order.
+ */
+function fuzzyItem(text: string): MenuItem | null {
+  const words = text.split(/\s+/).filter((w) => /^[a-z]{4,}$/.test(w));
+  let best: MenuItem | null = null;
+  let bestDist = 3;
+  for (const m of business.menu) {
+    for (const kw of m.keywords) {
+      if (kw.length < 4) continue;
+      for (const w of words) {
+        if (Math.abs(w.length - kw.length) > 2) continue;
+        const d = levenshtein(w, kw);
+        if (d < bestDist) {
+          bestDist = d;
+          best = m;
+        }
+      }
+    }
+  }
+  return bestDist <= 2 ? best : null;
+}
+
+const STOPWORDS = new Set([
+  "about", "what", "when", "where", "which", "there", "their", "your",
+  "you", "do", "does", "have", "has", "with", "for", "and", "the",
+  "are", "is", "can", "any", "our", "that", "this",
+]);
+
+/** Pull the most likely "topic" out of an unknown question ("catering"). */
+function extractTopic(text: string): string | null {
+  const words = text.toLowerCase().replace(/[^a-z\s]/g, " ").split(/\s+/);
+  let best: string | null = null;
+  for (const w of words) {
+    if (w.length >= 5 && !STOPWORDS.has(w) && (!best || w.length > best.length)) {
+      best = w;
+    }
+  }
+  return best;
+}
+
+/** Deterministic hash so the same question always gets the same reply. */
+function hashStr(s: string): number {
+  let h = 5381;
+  for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0;
+  return h;
+}
+
 const INTENT_KEYWORDS: Record<Exclude<Intent, "fallback" | "price" | "policy">, string[]> = {
   greeting: ["hello", "hi", "hey", "namaste", "good morning", "good afternoon", "good evening", "yo"],
   hours: ["open", "close", "hours", "hour", "timing", "timings", "when", "till", "until"],
@@ -116,7 +187,14 @@ export function analyzeMessage(raw: string): Analysis {
     });
   }
 
-  if (scores.size === 0) return empty;
+  // Nothing matched at all? One last try: a typo'd item name ("expresso?").
+  if (scores.size === 0) {
+    const fz = fuzzyItem(text);
+    if (fz) {
+      return { intent: "price", confidence: 0.5, item: fz, policyTopic: null, matched: [] };
+    }
+    return empty;
+  }
 
   // Priority tie-break: human > price > policy > order > others.
   const priority: Intent[] = ["human", "price", "policy", "order", "recommend", "hours", "location", "menu", "greeting", "thanks"];
@@ -130,6 +208,12 @@ export function analyzeMessage(raw: string): Analysis {
     }
   }
   const matched = scores.get(best)?.matched ?? [];
+
+  // The intent wants an item ("how much is expresso?") but the name was
+  // mistyped — fill it in with the fuzzy match.
+  if (!item && (best === "price" || best === "order" || best === "menu" || best === "recommend")) {
+    item = fuzzyItem(text);
+  }
 
   return {
     intent: best,
@@ -151,12 +235,22 @@ export function replyTo(raw: string): AgentReply {
     source,
   });
 
-  const handoffReply = (why: string): AgentReply =>
-    reply(
-      `Hmm, ${why} — let me get ${b.owner} for you! He usually replies within a few minutes. Meanwhile, I can help with the menu, prices, hours, or directions. 🙏`,
+  const handoffReply = (raw: string): AgentReply => {
+    // No more one canned line: rotate a few honest escalations, and echo
+    // what they actually asked about so it feels heard, not robotic.
+    const topic = extractTopic(norm(raw));
+    const about = topic ? ` about "${topic}"` : "";
+    const variants = [
+      `Good question${about} — that's one for ${b.owner}! I've flagged it for him, he usually replies within a few minutes. Meanwhile, I can help with the menu, prices, hours, or directions. 🙏`,
+      `Hmm, you got me${about}! Let me pass that to ${b.owner} — he'll know. Anything else about the café I can answer right now? ☕`,
+      `I don't know that one${about} yet — but ${b.owner} does! I've put it in his inbox. Want to hear about our signature drinks while you wait?`,
+    ];
+    return reply(
+      variants[hashStr(raw) % variants.length],
       "escalation rule",
       true
     );
+  };
 
   switch (a.intent) {
     case "greeting":
@@ -223,6 +317,6 @@ export function replyTo(raw: string): AgentReply {
       );
     case "fallback":
     default:
-      return handoffReply("I'm not sure about that one");
+      return handoffReply(raw);
   }
 }
