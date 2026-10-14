@@ -134,6 +134,7 @@ export default function Home() {
               </p>
               <p className="mt-2 text-center text-sm text-zinc-500">
                 Agreed upfront, in writing — no hourly billing, no retainers, no surprises.
+              </p>
               <ul className="mt-7 space-y-3 text-[15px] leading-relaxed text-zinc-700">
                 <li className="flex gap-3">
                   <span className="font-bold text-teal-600">✓</span>
