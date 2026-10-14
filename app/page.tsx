@@ -200,18 +200,16 @@ export default function Home() {
                 Most popular
               </span>
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-teal-700">
-                The Brain · premium
+                The Brain
               </p>
               <p className="mt-3 text-4xl font-bold tracking-tight">
-                Rs 5,000{" "}
-                <span className="text-base font-medium text-zinc-500">setup + Rs 1,500/mo</span>
+                Rs 2,500 <span className="text-base font-medium text-zinc-500">one-time</span>
               </p>
               <ul className="mt-5 flex-1 space-y-2.5 text-sm leading-relaxed text-zinc-700">
                 <li>AI receptionist trained on your business</li>
                 <li>Answers customers 24/7 — site, DMs, WhatsApp</li>
                 <li>Never invents a price or hour</li>
                 <li>Tricky questions land in your inbox</li>
-                <li>Monthly keeps its knowledge fresh</li>
               </ul>
               <a
                 href={`mailto:${EMAIL}?subject=${encodeURIComponent("AI receptionist for my business")}`}
@@ -226,8 +224,7 @@ export default function Home() {
                 Full Package
               </p>
               <p className="mt-3 text-4xl font-bold tracking-tight">
-                Rs 8,000{" "}
-                <span className="text-base font-medium text-zinc-500">+ Rs 1,500/mo</span>
+                Rs 6,000 <span className="text-base font-medium text-zinc-500">one-time</span>
               </p>
               <ul className="mt-5 flex-1 space-y-2.5 text-sm leading-relaxed text-zinc-600">
                 <li>Everything in Website + Brain</li>
@@ -243,8 +240,7 @@ export default function Home() {
             </div>
           </div>
           <p className="mx-auto mt-8 max-w-xl text-center text-sm text-zinc-500">
-            The monthly isn't a fee for nothing — it's us keeping your agent's
-            knowledge fresh: new menu items, new hours, same instant answers.
+            One-time pricing, no subscriptions. You pay once, it's yours.
           </p>
         </div>
       </section>
