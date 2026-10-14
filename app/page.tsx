@@ -38,39 +38,39 @@ export default function Home() {
           Live demo · no signup
         </p>
         <h1 className="mx-auto mt-6 max-w-3xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
-          Your business website, <span className="text-teal-600">with a brain</span>
+          A website for your shop, <span className="text-teal-600">with a brain</span>
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-zinc-600">
-          We build your shop a complete website — and give it an AI receptionist
-          trained on your menu, hours, and prices. It answers customers 24/7,
-          and hands the tricky questions to you instead of guessing.
+          We build complete websites for local businesses — Rs 4,000, delivered
+          in 3 days. And every site comes with our hero: an AI receptionist
+          that answers your customers 24/7.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <a
             href="#demo"
             className="rounded-full bg-teal-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-teal-700"
           >
-            See it in action
+            See the demo
           </a>
           <a
-            href={`mailto:${EMAIL}?subject=${encodeURIComponent("Smart website for my business")}`}
+            href={`mailto:${EMAIL}?subject=${encodeURIComponent("Website for my business (Rs 4,000)")}`}
             className="rounded-full border border-zinc-300 bg-white px-7 py-3 text-sm font-semibold text-zinc-900 transition hover:border-zinc-400 hover:bg-zinc-50"
           >
-            Get your smart website
+            Get your website — Rs 4,000
           </a>
         </div>
         <div className="mx-auto mt-12 max-w-3xl rounded-3xl border border-zinc-200 bg-zinc-50/70 px-8 py-6 text-left">
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-            One project, everything included
+            What Rs 4,000 gets you
           </p>
           <ul className="mt-3 space-y-2.5 text-[15px] text-zinc-700">
             <li className="flex gap-3">
               <span className="font-bold text-teal-600">✓</span>
-              A complete website — your story, menu, photos, WhatsApp ordering
+              A complete website — your story, menu, photos, WhatsApp ordering, delivered in 3 days
             </li>
             <li className="flex gap-3">
               <span className="font-bold text-teal-600">✓</span>
-              An AI receptionist on it, answering customers day and night
+              Our hero: an AI receptionist built in, answering customers day and night
             </li>
             <li className="flex gap-3">
               <span className="font-bold text-teal-600">✓</span>
@@ -128,10 +128,10 @@ export default function Home() {
           <div className="mx-auto mt-12 max-w-xl">
             <div className="flex flex-col rounded-3xl border-2 border-teal-600 bg-teal-50/60 p-8 shadow-md sm:p-10">
               <p className="text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-teal-700">
-                The Smart Website
+                The Website, with a brain
               </p>
               <p className="mt-3 text-center text-5xl font-bold tracking-tight">
-                Rs 6,000 <span className="text-lg font-medium text-zinc-500">one-time</span>
+                Rs 4,000 <span className="text-lg font-medium text-zinc-500">one-time</span>
               </p>
               <ul className="mt-7 space-y-3 text-[15px] leading-relaxed text-zinc-700">
                 <li className="flex gap-3">
@@ -140,7 +140,7 @@ export default function Home() {
                 </li>
                 <li className="flex gap-3">
                   <span className="font-bold text-teal-600">✓</span>
-                  AI receptionist built in — answers customers 24/7
+                  Our hero: AI receptionist built in, answering customers 24/7
                 </li>
                 <li className="flex gap-3">
                   <span className="font-bold text-teal-600">✓</span>
@@ -152,10 +152,10 @@ export default function Home() {
                 </li>
               </ul>
               <a
-                href={`mailto:${EMAIL}?subject=${encodeURIComponent("Smart website for my business (Rs 6,000)")}`}
+                href={`mailto:${EMAIL}?subject=${encodeURIComponent("Website for my business (Rs 4,000)")}`}
                 className="mt-8 rounded-full bg-teal-600 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-teal-700"
               >
-                Get your smart website
+                Get your website
               </a>
             </div>
           </div>
@@ -198,6 +198,56 @@ export default function Home() {
                 </span>
                 <h3 className="mt-4 text-lg font-semibold">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-zinc-600">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── ROADMAP ── */}
+      <section className="border-t border-zinc-100">
+        <div className="mx-auto max-w-6xl px-6 py-16">
+          <p className="text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-zinc-400">
+            Where this is going
+          </p>
+          <div className="mx-auto mt-8 grid max-w-4xl gap-4 md:grid-cols-3">
+            {[
+              {
+                tag: "Live now",
+                title: "Website + AI receptionist",
+                body: "Your site answers customers 24/7 from your real business info.",
+                active: true,
+              },
+              {
+                tag: "Next",
+                title: "Social media DMs",
+                body: "The same receptionist inside your Instagram and WhatsApp DMs.",
+                active: false,
+              },
+              {
+                tag: "Then",
+                title: "Orders & customers",
+                body: "It takes orders and keeps customer details organized for you.",
+                active: false,
+              },
+            ].map((s) => (
+              <div
+                key={s.title}
+                className={`rounded-2xl border p-6 ${
+                  s.active
+                    ? "border-teal-600/30 bg-teal-50/50"
+                    : "border-zinc-200 bg-white opacity-75"
+                }`}
+              >
+                <span
+                  className={`inline-block rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] ${
+                    s.active ? "bg-teal-600 text-white" : "bg-zinc-100 text-zinc-500"
+                  }`}
+                >
+                  {s.tag}
+                </span>
+                <h3 className="mt-3 font-semibold">{s.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-zinc-600">{s.body}</p>
               </div>
             ))}
           </div>

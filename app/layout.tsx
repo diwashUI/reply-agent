@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ReplyAgent — AI receptionist for small businesses",
-  description: "ReplyAgent answers your customers' DMs instantly from your real business info, and hands off to you when it doesn't know.",
+  title: "Smart websites for local shops — with AI receptionist",
+  description: "We build complete websites for local businesses (Rs 4,000, 3 days) — every site comes with an AI receptionist that answers your customers 24/7.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
