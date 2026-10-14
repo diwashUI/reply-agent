@@ -4,7 +4,7 @@
 // and either answers from real business data or hands off to the owner.
 // Every decision is explainable: intent + confidence + source.
 
-import { business, type MenuItem } from "./knowledge";
+import { business, type BusinessInfo, type MenuItem } from "./knowledge";
 
 export type Intent =
   | "greeting"
@@ -17,6 +17,7 @@ export type Intent =
   | "policy"
   | "human"
   | "thanks"
+  | "smalltalk"
   | "fallback";
 
 export interface Analysis {
@@ -25,6 +26,7 @@ export interface Analysis {
   item: MenuItem | null; // menu item mentioned, if any
   policyTopic: string | null; // policy matched, if any
   matched: string[]; // keywords that fired, for transparency
+  smalltalkIndex: number | null; // which small-talk reply to use
 }
 
 export interface AgentReply extends Analysis {
@@ -135,6 +137,41 @@ const INTENT_KEYWORDS: Record<Exclude<Intent, "fallback" | "price" | "policy">, 
 
 const PRICE_KEYWORDS = ["price", "cost", "how much", "rate", "charge", "rs"];
 
+/**
+ * Conversational bits a receptionist should never escalate: "how are you",
+ * "who are you", "bye", "help", "ok". Each group has its own warm reply,
+ * written against the business info so re-skinning still works.
+ */
+const SMALLTALK: { keywords: string[]; reply: (b: BusinessInfo) => string }[] = [
+  {
+    keywords: ["how are you", "how r u", "hows it going", "how is it going", "how do you do"],
+    reply: () =>
+      "I'm doing great, thanks for asking! ☕ Ready to help — ask me about the menu, prices, hours, or directions.",
+  },
+  {
+    keywords: ["who are you", "what are you", "your name", "about yourself", "introduce yourself"],
+    reply: (b) =>
+      `I'm ${b.name}'s AI assistant — I answer questions about the menu, prices, hours, and directions, instantly, day or night!`,
+  },
+  {
+    keywords: ["bye", "goodbye", "good bye", "see you", "good night", "goodnight", "farewell"],
+    reply: (b) => `Bye! Hope to see you at ${b.name} soon ☕`,
+  },
+  {
+    keywords: ["help", "what can you do", "options", "commands", "what do you do"],
+    reply: () =>
+      "Here's what I can do: tell you about the menu and prices, opening hours, how to find us, wifi, takeaway, and more. Just ask!",
+  },
+  {
+    keywords: ["sorry", "my bad", "oops", "apologies"],
+    reply: () => "No worries at all! What can I help you with?",
+  },
+  {
+    keywords: ["ok", "okay", "cool", "nice", "sounds good"],
+    reply: () => "Glad to help! Anything else? ☕",
+  },
+];
+
 export function analyzeMessage(raw: string): Analysis {
   const text = norm(raw);
   const empty: Analysis = {
@@ -143,6 +180,7 @@ export function analyzeMessage(raw: string): Analysis {
     item: null,
     policyTopic: null,
     matched: [],
+    smalltalkIndex: null,
   };
   if (!text) return empty;
 
@@ -179,6 +217,19 @@ export function analyzeMessage(raw: string): Analysis {
   set("price", hits(text, PRICE_KEYWORDS));
   if (policyTopic) set("policy", policyMatched);
 
+  // Small-talk: find the best-matching subgroup (kept last in priority,
+  // so real intents always win ties — "good morning" stays a greeting).
+  let smalltalkIndex: number | null = null;
+  let smalltalkMatched: string[] = [];
+  SMALLTALK.forEach((group, i) => {
+    const h = hits(text, group.keywords);
+    if (h.length > smalltalkMatched.length) {
+      smalltalkIndex = i;
+      smalltalkMatched = h;
+    }
+  });
+  if (smalltalkIndex !== null) set("smalltalk", smalltalkMatched);
+
   // A bare item name ("latte?") reads as a price question.
   if (item && itemMatched.length > 0 && !scores.has("price")) {
     scores.set("price", {
@@ -191,13 +242,14 @@ export function analyzeMessage(raw: string): Analysis {
   if (scores.size === 0) {
     const fz = fuzzyItem(text);
     if (fz) {
-      return { intent: "price", confidence: 0.5, item: fz, policyTopic: null, matched: [] };
+      return { intent: "price", confidence: 0.5, item: fz, policyTopic: null, matched: [], smalltalkIndex: null };
     }
     return empty;
   }
 
   // Priority tie-break: human > price > policy > order > others.
-  const priority: Intent[] = ["human", "price", "policy", "order", "recommend", "hours", "location", "menu", "greeting", "thanks"];
+  // Small-talk sits last — it's the conversational catch-all.
+  const priority: Intent[] = ["human", "price", "policy", "order", "recommend", "hours", "location", "menu", "greeting", "thanks", "smalltalk"];
   let best: Intent = "fallback";
   let bestScore = -1;
   for (const intent of priority) {
@@ -221,6 +273,7 @@ export function analyzeMessage(raw: string): Analysis {
     item,
     policyTopic: best === "policy" ? policyTopic : null,
     matched,
+    smalltalkIndex: best === "smalltalk" ? smalltalkIndex : null,
   };
 }
 
@@ -315,6 +368,10 @@ export function replyTo(raw: string): AgentReply {
         `Anytime! Hope to see you at ${b.name} soon ☕`,
         "greeting"
       );
+    case "smalltalk": {
+      const group = SMALLTALK[a.smalltalkIndex ?? 0];
+      return reply(group.reply(b), "smalltalk");
+    }
     case "fallback":
     default:
       return handoffReply(raw);

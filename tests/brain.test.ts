@@ -103,6 +103,28 @@ describe("replyTo", () => {
     expect(r.text).toContain("Himalayan Spiced Latte");
   });
 
+  it("handles small talk instead of escalating", () => {
+    expect(analyzeMessage("how are you?").intent).toBe("smalltalk");
+    expect(analyzeMessage("who are you?").intent).toBe("smalltalk");
+    expect(analyzeMessage("bye!").intent).toBe("smalltalk");
+    expect(analyzeMessage("help").intent).toBe("smalltalk");
+    expect(analyzeMessage("ok").intent).toBe("smalltalk");
+    expect(analyzeMessage("sorry about that").intent).toBe("smalltalk");
+  });
+
+  it("answers small talk warmly without handoff", () => {
+    const r = replyTo("how are you?");
+    expect(r.handoff).toBe(false);
+    expect(r.text).toMatch(/great/i);
+    const r2 = replyTo("who are you?");
+    expect(r2.handoff).toBe(false);
+    expect(r2.text).toContain("Brewmandu");
+  });
+
+  it("keeps greeting priority over small talk", () => {
+    expect(analyzeMessage("good morning").intent).toBe("greeting");
+  });
+
   it("varies handoff replies but stays deterministic", () => {
     const r1 = replyTo("do you cater weddings?");
     const r2 = replyTo("do you cater weddings?");

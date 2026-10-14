@@ -51,6 +51,7 @@ export default function Demo() {
         item: null,
         policyTopic: null,
         matched: [],
+        smalltalkIndex: null,
         text: "",
         handoff: false,
         source: "greeting",
