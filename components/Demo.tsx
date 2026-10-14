@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { replyTo, type AgentReply } from "@/lib/brain";
 import { business } from "@/lib/knowledge";
+import Logo from "./Logo";
 
 interface Msg {
   id: number;
@@ -98,9 +99,7 @@ export default function Demo() {
       {/* ── Customer chat ── */}
       <div className="flex flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm">
         <div className="flex items-center gap-3 border-b border-zinc-100 px-5 py-4">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-600 text-lg text-white">
-            ☕
-          </span>
+          <Logo className="h-10 w-10" />
           <div>
             <p className="font-semibold text-zinc-900">{business.name} Assistant</p>
             <p className="flex items-center gap-1.5 text-xs text-zinc-500">

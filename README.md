@@ -28,6 +28,15 @@ Everything the agent knows lives in **`lib/knowledge.ts`** — business name,
 owner, hours, menu with prices, policies (wifi, takeaway, payments…). Swap that
 one file and the whole demo answers as the new business.
 
+## API — one brain, many front-ends
+
+`POST /api/chat` with `{ "message": "how much is a latte?" }` returns
+`{ "text", "intent", "confidence", "handoff", "source" }`. CORS is open, so any
+client website can call it. The Brewmandu demo site does exactly this: its
+floating chat widget (`components/AgentChat.tsx` in `brewmandu-demo`) posts
+here, which is how the website and the agent stay in sync — one knowledge file,
+two faces.
+
 ## Run it
 
 ```bash
