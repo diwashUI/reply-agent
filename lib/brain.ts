@@ -124,7 +124,7 @@ function hashStr(s: string): number {
   return h;
 }
 
-const INTENT_KEYWORDS: Record<Exclude<Intent, "fallback" | "price" | "policy">, string[]> = {
+const INTENT_KEYWORDS: Record<Exclude<Intent, "fallback" | "price" | "policy" | "smalltalk">, string[]> = {
   greeting: ["hello", "hi", "hey", "namaste", "good morning", "good afternoon", "good evening", "yo"],
   hours: ["open", "close", "hours", "hour", "timing", "timings", "when", "till", "until"],
   location: ["where", "address", "location", "reach", "direction", "map", "thamel", "situated"],
