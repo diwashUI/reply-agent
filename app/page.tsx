@@ -2,7 +2,7 @@ import Demo from "@/components/Demo";
 import Logo from "@/components/Logo";
 import { business } from "@/lib/knowledge";
 
-const BREWMANDU_URL = "https://cafe-demo-n4vf4usqq-noobug138-6131s-projects.vercel.app";
+const BREWMANDU_URL = "https://cafe-demo-neon.vercel.app";
 const INSTAGRAM_URL = "https://instagram.com/its_aurevya";
 const GITHUB_URL = "https://github.com/diwashUI";
 const EMAIL = "itsaurevya@gmail.com";
