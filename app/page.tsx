@@ -38,43 +38,47 @@ export default function Home() {
           Live demo · no signup
         </p>
         <h1 className="mx-auto mt-6 max-w-3xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
-          An AI receptionist for <span className="text-teal-600">your business</span>
+          Your business website, <span className="text-teal-600">with a brain</span>
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-zinc-600">
-          A chat agent trained on <em className="not-italic font-semibold text-zinc-900">your</em> menu,
-          hours, and prices. It answers customers on your website 24/7 — and hands
-          the tricky questions to you instead of guessing.
+          We build your shop a complete website — and give it an AI receptionist
+          trained on your menu, hours, and prices. It answers customers 24/7,
+          and hands the tricky questions to you instead of guessing.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <a
             href="#demo"
             className="rounded-full bg-teal-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-teal-700"
           >
-            Try the live demo
+            See it in action
           </a>
           <a
-            href={`mailto:${EMAIL}?subject=${encodeURIComponent("ReplyAgent for my business")}`}
+            href={`mailto:${EMAIL}?subject=${encodeURIComponent("Smart website for my business")}`}
             className="rounded-full border border-zinc-300 bg-white px-7 py-3 text-sm font-semibold text-zinc-900 transition hover:border-zinc-400 hover:bg-zinc-50"
           >
-            Get it for your business
+            Get your smart website
           </a>
         </div>
         <div className="mx-auto mt-12 max-w-3xl rounded-3xl border border-zinc-200 bg-zinc-50/70 px-8 py-6 text-left">
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-            What you're getting
+            One project, everything included
           </p>
           <ul className="mt-3 space-y-2.5 text-[15px] text-zinc-700">
             <li className="flex gap-3">
               <span className="font-bold text-teal-600">✓</span>
-              A chat widget on your website that replies to customers in seconds, day or night
+              A complete website — your story, menu, photos, WhatsApp ordering
             </li>
             <li className="flex gap-3">
               <span className="font-bold text-teal-600">✓</span>
-              Trained on your real business info — it can never invent a wrong price
+              An AI receptionist on it, answering customers day and night
             </li>
             <li className="flex gap-3">
               <span className="font-bold text-teal-600">✓</span>
-              An owner inbox: the questions it can't answer land with you, flagged
+              Trained on your real business info — it never invents a price
+            </li>
+            <li className="flex gap-3">
+              <span className="font-bold text-teal-600">✓</span>
+              An owner inbox — the questions it can't answer land with you
             </li>
           </ul>
         </div>
@@ -93,70 +97,18 @@ export default function Home() {
             This demo is skinned as {business.name}, the sample café. Try to stump it —
             watch the brain panel and the owner inbox.
           </p>
-          <div className="mt-10">
-            <Demo />
-          </div>
-        </div>
-      </section>
-
-      {/* ── PACKAGE: website + brain ── */}
-      <section id="package" className="scroll-mt-24">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <p className="text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-teal-600">
-            The full package
-          </p>
-          <h2 className="mx-auto mt-3 max-w-2xl text-center text-3xl font-bold tracking-tight sm:text-4xl">
-            We build the website. Then we give it a brain.
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-center text-zinc-600">
-            One package for a local business: a website that brings customers in,
-            and an agent that answers them at 11pm.
-          </p>
-          <div className="mx-auto mt-12 grid max-w-4xl items-stretch gap-5 md:grid-cols-[1fr_auto_1fr]">
+          <p className="mt-2 text-center text-sm">
             <a
               href={BREWMANDU_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              className="font-semibold text-teal-700 underline decoration-teal-300 underline-offset-4 transition hover:text-teal-600"
             >
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-amber-700">
-                01 · The website
-              </p>
-              <h3 className="mt-3 text-2xl font-bold tracking-tight">Brewmandu</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600">
-                The demo café website — story, menu, WhatsApp ordering. This is
-                the kind of site we build for real shops in 3 days.
-              </p>
-              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700">
-                Visit the demo site
-                <span className="transition group-hover:translate-x-0.5">→</span>
-              </span>
+              See it living on the demo café website →
             </a>
-            <div className="flex items-center justify-center">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-teal-600 text-xl font-bold text-white">
-                +
-              </span>
-            </div>
-            <div className="rounded-3xl border-2 border-teal-600/20 bg-teal-50/50 p-8 shadow-sm">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-teal-700">
-                02 · The brain
-              </p>
-              <h3 className="mt-3 flex items-center gap-2.5 text-2xl font-bold tracking-tight">
-                <Logo className="h-8 w-8" />
-                ReplyAgent
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600">
-                The AI receptionist — trained on the same business info as the
-                site. You're chatting with it right now, above.
-              </p>
-              <a
-                href="#demo"
-                className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700"
-              >
-                Back to the live demo
-                <span>↑</span>
-              </a>
-            </div>
+          </p>
+          <div className="mt-10">
+            <Demo />
           </div>
         </div>
       </section>
@@ -171,71 +123,39 @@ export default function Home() {
             Simple pricing, serious value
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-center text-zinc-600">
-            Start with the site. Add the brain when you're ready. All prices in NPR.
+            One product. One price. Everything included.
           </p>
-          <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
-            <div className="flex flex-col rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                The Website
+          <div className="mx-auto mt-12 max-w-xl">
+            <div className="flex flex-col rounded-3xl border-2 border-teal-600 bg-teal-50/60 p-8 shadow-md sm:p-10">
+              <p className="text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-teal-700">
+                The Smart Website
               </p>
-              <p className="mt-3 text-4xl font-bold tracking-tight">
-                Rs 4,000 <span className="text-base font-medium text-zinc-500">one-time</span>
+              <p className="mt-3 text-center text-5xl font-bold tracking-tight">
+                Rs 6,000 <span className="text-lg font-medium text-zinc-500">one-time</span>
               </p>
-              <ul className="mt-5 flex-1 space-y-2.5 text-sm leading-relaxed text-zinc-600">
-                <li>One-page site for your business</li>
-                <li>Your story, menu, photos</li>
-                <li>WhatsApp ordering built in</li>
-                <li>Delivered in 3 days</li>
+              <ul className="mt-7 space-y-3 text-[15px] leading-relaxed text-zinc-700">
+                <li className="flex gap-3">
+                  <span className="font-bold text-teal-600">✓</span>
+                  Complete website — story, menu, photos, WhatsApp ordering, delivered in 3 days
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-teal-600">✓</span>
+                  AI receptionist built in — answers customers 24/7
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-teal-600">✓</span>
+                  Trained on your real info — never invents a price
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-teal-600">✓</span>
+                  Owner inbox for the questions it can't answer
+                </li>
               </ul>
               <a
-                href={`mailto:${EMAIL}?subject=${encodeURIComponent("Website for my business (Rs 4,000)")}`}
-                className="mt-7 rounded-full border border-zinc-300 px-6 py-2.5 text-center text-sm font-semibold transition hover:border-zinc-500"
+                href={`mailto:${EMAIL}?subject=${encodeURIComponent("Smart website for my business (Rs 6,000)")}`}
+                className="mt-8 rounded-full bg-teal-600 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-teal-700"
               >
-                Get the website
-              </a>
-            </div>
-
-            <div className="relative flex flex-col rounded-3xl border-2 border-teal-600 bg-teal-50/60 p-8 shadow-md">
-              <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-teal-600 px-4 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-white">
-                Most popular
-              </span>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-teal-700">
-                The Brain
-              </p>
-              <p className="mt-3 text-4xl font-bold tracking-tight">
-                Rs 2,500 <span className="text-base font-medium text-zinc-500">one-time</span>
-              </p>
-              <ul className="mt-5 flex-1 space-y-2.5 text-sm leading-relaxed text-zinc-700">
-                <li>AI receptionist trained on your business</li>
-                <li>Answers customers 24/7 — site, DMs, WhatsApp</li>
-                <li>Never invents a price or hour</li>
-                <li>Tricky questions land in your inbox</li>
-              </ul>
-              <a
-                href={`mailto:${EMAIL}?subject=${encodeURIComponent("AI receptionist for my business")}`}
-                className="mt-7 rounded-full bg-teal-600 px-6 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-teal-700"
-              >
-                Get the brain
-              </a>
-            </div>
-
-            <div className="flex flex-col rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                Full Package
-              </p>
-              <p className="mt-3 text-4xl font-bold tracking-tight">
-                Rs 6,000 <span className="text-base font-medium text-zinc-500">one-time</span>
-              </p>
-              <ul className="mt-5 flex-1 space-y-2.5 text-sm leading-relaxed text-zinc-600">
-                <li>Everything in Website + Brain</li>
-                <li>One package, one person to call</li>
-                <li>Your entire online front desk, done for you</li>
-              </ul>
-              <a
-                href={`mailto:${EMAIL}?subject=${encodeURIComponent("Full package: website + AI receptionist")}`}
-                className="mt-7 rounded-full border border-zinc-300 px-6 py-2.5 text-center text-sm font-semibold transition hover:border-zinc-500"
-              >
-                Get the package
+                Get your smart website
               </a>
             </div>
           </div>
@@ -252,24 +172,24 @@ export default function Home() {
             How it works
           </p>
           <h2 className="mt-3 text-center text-3xl font-bold tracking-tight sm:text-4xl">
-            Three steps to an AI receptionist
+            Three steps to your smart website
           </h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {[
               {
                 n: "1",
-                title: "Teach it your business",
-                body: "Menu, hours, prices, policies — one knowledge file. It only ever answers from this, so it can't invent a wrong price.",
+                title: "Tell us about your business",
+                body: "Menu, hours, story, photos — one conversation. You talk, we handle everything from there.",
               },
               {
                 n: "2",
-                title: "It answers instantly",
-                body: "Customers get replies in seconds, 24/7, in the DMs they're already using. Every answer shows its intent and confidence.",
+                title: "We build it in 3 days",
+                body: "Your complete website goes live, with the AI receptionist trained on your info and answering from day one.",
               },
               {
                 n: "3",
-                title: "You step in when it matters",
-                body: "Low confidence? It hands off to you with the full question flagged in your inbox — instead of confidently guessing wrong.",
+                title: "Customers get answers 24/7",
+                body: "Instant replies day and night from your real business info. The tricky questions land in your inbox, flagged.",
               },
             ].map((s) => (
               <div key={s.n} className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
@@ -291,7 +211,7 @@ export default function Home() {
             Like what you see? Let's build yours.
           </h2>
           <p className="mx-auto mt-3 max-w-md text-zinc-400">
-            Websites and AI agents for local businesses — designed, built, and
+            Smart websites for local businesses — designed, built, and
             shipped from Kathmandu.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
