@@ -1,9 +1,10 @@
-# ReplyAgent ☕
+# Sahayak Studio ☕
 
-An AI receptionist for small businesses. Customers ask questions in the DMs —
-hours, menu, prices, directions — and the agent answers instantly from the
-business's real info. When it doesn't know something, it hands off to the owner
-instead of guessing.
+*Sahayak* means "helper" — a small freelance studio from Kathmandu building
+smart websites for local businesses. Every site ships with an AI receptionist:
+customers ask questions in the DMs — hours, menu, prices, directions — and the
+agent answers instantly from the business's real info. When it doesn't know
+something, it hands off to the owner instead of guessing.
 
 **Live demo:** skinned as Brewmandu, the sample café — chat with it, watch the
 agent brain panel show its intent + confidence for every reply, and try to stump

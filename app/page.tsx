@@ -14,7 +14,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
           <span className="flex items-center gap-2.5">
             <Logo className="h-8 w-8" />
-            <span className="text-lg font-bold tracking-tight">ReplyAgent</span>
+            <span className="text-lg font-bold tracking-tight">Sahayak Studio</span>
           </span>
           <div className="flex items-center gap-5">
             <a href="#pricing" className="hidden text-sm font-medium text-zinc-600 transition hover:text-zinc-900 sm:block">
@@ -260,8 +260,12 @@ export default function Home() {
             Let's build yours.
           </h2>
           <p className="mx-auto mt-3 max-w-md text-zinc-400">
-            ReplyAgent builds smart websites for local businesses —
-            designed and shipped from Kathmandu.
+            Sahayak Studio is a small freelance studio building smart websites
+            for local businesses — designed and shipped from Kathmandu.
+          </p>
+          <p className="mx-auto mt-2 max-w-md text-sm text-zinc-500">
+            <span className="italic">Sahayak</span> means &ldquo;helper&rdquo; —
+            fitting, since every site we ship comes with one.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <a
@@ -294,7 +298,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-zinc-500 sm:flex-row">
           <span className="flex items-center gap-2.5">
             <Logo className="h-6 w-6" />
-            <span className="font-semibold text-zinc-200">ReplyAgent</span>
+            <span className="font-semibold text-zinc-200">Sahayak Studio</span>
             <span>· Kathmandu, Nepal</span>
           </span>
           <div className="flex items-center gap-5">
