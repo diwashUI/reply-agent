@@ -1,59 +1,10 @@
 import Demo from "@/components/Demo";
 import Logo from "@/components/Logo";
+import ContactCtas from "@/components/ContactCtas";
+import { EMAIL, INSTAGRAM_URL } from "@/lib/contact";
 
 const BREWMANDU_URL = "https://brewmundaktm.vercel.app";
-const INSTAGRAM_URL = "https://instagram.com/its_aurevya";
 const GITHUB_URL = "https://github.com/diwashUI";
-const EMAIL = "itsaurevya@gmail.com";
-// diwash's WhatsApp number in international format, no "+" or spaces, e.g. "977981234567".
-// The WhatsApp buttons stay hidden until this is filled in.
-const WHATSAPP_NUMBER: string = "9779828076618";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-  "Hi SahayakOS! I want a website for my business."
-)}`;
-
-/** Email + WhatsApp contact options. WhatsApp appears once WHATSAPP_NUMBER is set. */
-function ContactCtas({ variant }: { variant: "hero" | "card" }) {
-  const mailto = `mailto:${EMAIL}?subject=${encodeURIComponent("Website for my business")}`;
-  const wa = WHATSAPP_NUMBER !== "" && (
-    <a
-      href={WHATSAPP_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={
-        variant === "hero"
-          ? "rounded-full border border-emerald-600/30 bg-emerald-50 px-6 py-3 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-100"
-          : "rounded-full border border-emerald-600/30 bg-emerald-50 px-6 py-3 text-center text-sm font-semibold text-emerald-700 transition hover:bg-emerald-100"
-      }
-    >
-      WhatsApp us
-    </a>
-  );
-  if (variant === "hero") {
-    return (
-      <>
-        <a
-          href={mailto}
-          className="rounded-full border border-zinc-300 bg-white px-6 py-3 text-sm font-semibold text-zinc-900 transition hover:border-zinc-400 hover:bg-zinc-50"
-        >
-          Email us
-        </a>
-        {wa}
-      </>
-    );
-  }
-  return (
-    <div className="mt-8 flex flex-col gap-3">
-      <a
-        href={mailto}
-        className="rounded-full bg-teal-600 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-teal-700"
-      >
-        Email us
-      </a>
-      {wa}
-    </div>
-  );
-}
 
 export default function Home() {
   return (
@@ -83,20 +34,20 @@ export default function Home() {
       </header>
 
       {/* ── HERO ── */}
-      <section className="mx-auto max-w-6xl px-6 pb-16 pt-16 text-center sm:pt-24">
+      <section className="mx-auto max-w-6xl px-6 pb-8 pt-10 text-center sm:pt-12">
         <p className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-600 shadow-sm">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
           Live · no signup
         </p>
-        <h1 className="mx-auto mt-6 max-w-3xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+        <h1 className="mx-auto mt-4 max-w-3xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
           A website for your shop, <span className="text-teal-600">with a brain</span>
         </h1>
-        <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-zinc-600">
+        <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-zinc-600">
           We build complete websites for local businesses — delivered in
           3 days, for one honest fixed price. And every site comes with
           our hero: an AI receptionist that answers your customers 24/7.
         </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
           <a
             href="#live"
             className="rounded-full bg-teal-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-teal-700"
@@ -105,11 +56,11 @@ export default function Home() {
           </a>
           <ContactCtas variant="hero" />
         </div>
-        <div className="mx-auto mt-12 max-w-3xl rounded-3xl border border-zinc-200 bg-zinc-50/70 px-8 py-6 text-left">
+        <div className="mx-auto mt-8 max-w-3xl rounded-3xl border border-zinc-200 bg-zinc-50/70 px-8 py-5 text-left">
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
             What you get
           </p>
-          <ul className="mt-3 space-y-2.5 text-[15px] text-zinc-700">
+          <ul className="mt-3 space-y-2 text-[15px] text-zinc-700">
             <li className="flex gap-3">
               <span className="font-bold text-teal-600">✓</span>
               A complete website — your story, menu, photos, WhatsApp ordering, delivered in 3 days
