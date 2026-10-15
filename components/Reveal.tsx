@@ -16,10 +16,9 @@ export default function Reveal({ children }: { children: ReactNode }) {
     }
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          io.disconnect();
-        }
+        // Re-triggers in both directions: fades out when it leaves the
+        // viewport, plays again when it re-enters (scrolling up or down).
+        setVisible(entry.isIntersecting);
       },
       { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
