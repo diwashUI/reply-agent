@@ -7,7 +7,7 @@ const GITHUB_URL = "https://github.com/diwashUI";
 const EMAIL = "itsaurevya@gmail.com";
 // diwash's WhatsApp number in international format, no "+" or spaces, e.g. "977981234567".
 // The WhatsApp buttons stay hidden until this is filled in.
-const WHATSAPP_NUMBER = "";
+const WHATSAPP_NUMBER = "9779828076618";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   "Hi SahayakOS! I want a website for my business."
 )}`;
