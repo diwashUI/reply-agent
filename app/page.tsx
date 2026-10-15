@@ -1,6 +1,7 @@
 import Demo from "@/components/Demo";
 import Logo from "@/components/Logo";
 import ContactCtas from "@/components/ContactCtas";
+import Reveal from "@/components/Reveal";
 import { EMAIL, INSTAGRAM_URL } from "@/lib/contact";
 
 const BREWMANDU_URL = "https://brewmundaktm.vercel.app";
@@ -34,6 +35,7 @@ export default function Home() {
       </header>
 
       {/* ── HERO ── */}
+      <Reveal>
       <section className="mx-auto max-w-6xl px-6 pb-8 pt-10 text-center sm:pt-12">
         <p className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-600 shadow-sm">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
@@ -80,8 +82,10 @@ export default function Home() {
           </ul>
         </div>
       </section>
+      </Reveal>
 
       {/* ── LIVE ── */}
+      <Reveal>
       <section id="live" className="scroll-mt-24 bg-zinc-50/70">
         <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
           <p className="text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-teal-600">
@@ -109,8 +113,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
       {/* ── WORK ── */}
+      <Reveal>
       <section id="work" className="scroll-mt-24">
         <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
           <p className="text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-teal-600">
@@ -150,8 +156,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
       {/* ── PRICING ── */}
+      <Reveal>
       <section id="pricing" className="scroll-mt-24">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <p className="text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-teal-600">
@@ -200,8 +208,10 @@ export default function Home() {
           </p>
         </div>
       </section>
+      </Reveal>
 
       {/* ── HOW IT WORKS ── */}
+      <Reveal>
       <section id="how" className="scroll-mt-24 bg-zinc-50/70">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <p className="text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-teal-600">
@@ -239,8 +249,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
       {/* ── ROADMAP ── */}
+      <Reveal>
       <section className="border-t border-zinc-100">
         <div className="mx-auto max-w-6xl px-6 py-16">
           <p className="text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-zinc-400">
@@ -289,8 +301,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
       {/* ── CONTACT CTA ── */}
+      <Reveal>
       <section className="bg-zinc-900">
         <div className="mx-auto max-w-6xl px-6 py-16 text-center sm:py-20">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -330,6 +344,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </Reveal>
 
       <footer className="border-t border-zinc-800 bg-zinc-950">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-zinc-500 sm:flex-row">
